@@ -5,9 +5,9 @@ The files in this repository were used to configure the network depicted below.
 
 ![image](https://user-images.githubusercontent.com/89866159/147961841-e73dd6da-f35d-4cf8-8243-a399cda4ed5f.png)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the elk.yml file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+root@ansible$: elk.yml
 
 This document contains the following details:
 - Description of the Topologu
@@ -44,29 +44,30 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by Jumpbox.
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box  | Yes                |99.82.228.92/98.154.33.226|
+|ELK-SERVER1| no                |99.82.228.92/98.154.33.226|
+| Web 1     | no                |99.82.228.92/98.154.33.226|
+| Web 2     | no                |99.82.228.92/98.154.33.226|
+| Web 3     | no                |99.82.228.92/98.154.33.226|
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
-
+It is more time efficient and you are allowed to configure more than one machine at once using root privilages from Ansible. 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+ - Installation of Pip3 
+ - Docker.io
+ - Configures the machine in order to use Docker as a command that linux understands. 
+ - Increase the machine's memory using : Command: sysctl -w vm.max_map_count=262144
+
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
